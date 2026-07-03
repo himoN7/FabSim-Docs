@@ -26,18 +26,33 @@
         </nav>
       </header>
 
-      <main class="content">
-        <article class="page-content">
-          <header class="page-hero">
-            <p class="page-tag">{{ page.title | default: site.title }}</p>
-            <h1>{{ page.title | default: site.title }}</h1>
-            {% if page.description %}
-              <p class="page-description">{{ page.description }}</p>
-            {% endif %}
-          </header>
-          {{ content }}
-        </article>
-      </main>
+      <div class="page-shell">
+        <aside class="sidebar">
+          <div class="sidebar-inner">
+            <p class="sidebar-title">Documentation</p>
+            <nav class="sidebar-nav">
+              {% assign docs_pages = site.pages | where_exp: "page", "page.path contains 'docs/'" | sort: 'path' %}
+              {% for doc in docs_pages %}
+                {% assign name = doc.name | remove: '.md' | replace: '-',' ' | capitalize %}
+                <a class="sidebar-link{% if page.url == doc.url %} current{% endif %}" href="{{ doc.url | relative_url }}">{{ doc.title | default: name }}</a>
+              {% endfor %}
+            </nav>
+          </div>
+        </aside>
+
+        <main class="content">
+          <article class="page-content">
+            <header class="page-hero">
+              <p class="page-tag">{{ page.title | default: site.title }}</p>
+              <h1>{{ page.title | default: site.title }}</h1>
+              {% if page.description %}
+                <p class="page-description">{{ page.description }}</p>
+              {% endif %}
+            </header>
+            {{ content }}
+          </article>
+        </main>
+      </div>
 
       <footer class="site-footer">
         <div>
