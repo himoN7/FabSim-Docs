@@ -3,34 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
     <title>{{ page.title | default: site.title }}</title>
     <meta name="description" content="{{ page.description | default: site.description }}" />
+    <link rel="icon" type="image/svg+xml" href="{{ '/assets/images/fabsim-icon.svg' | relative_url }}" />
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;500;600;700&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <div class="ambient ambient-a" aria-hidden="true"></div>
+    <div class="ambient ambient-b" aria-hidden="true"></div>
+
     <div class="shell">
-      <header class="brand-bar">
-        <div class="brand">
-          <span class="brand-mark">F</span>
-          <div>
+      <header class="brand-bar acrylic">
+        <a class="brand" href="{{ '/' | relative_url }}">
+          <span class="brand-mark">
+            <img src="{{ '/assets/images/fabsim-icon.svg' | relative_url }}" alt="FabSim" width="40" height="40" />
+          </span>
+          <div class="brand-copy">
             <p class="brand-title">{{ site.title }}</p>
             <p class="brand-subtitle">{{ site.description }}</p>
           </div>
-        </div>
-        <nav class="top-nav">
-          <a href="{{ '/index.html' | relative_url }}">Home</a>
-          <a href="https://github.com/himoN7/FabSim-Docs">Repository</a>
+        </a>
+        <nav class="top-nav" aria-label="Site">
+          <a class="nav-button{% if page.url == '/' %} is-active{% endif %}" href="{{ '/' | relative_url }}">Home</a>
+          <a class="nav-button nav-button-accent" href="https://github.com/himoN7/FabSim-Docs" target="_blank" rel="noopener noreferrer">GitHub</a>
         </nav>
       </header>
 
       <div class="page-shell">
         <aside class="sidebar">
-          <div class="sidebar-inner">
+          <div class="sidebar-inner acrylic">
             <p class="sidebar-title">Documentation</p>
-            <nav class="sidebar-nav">
+            <nav class="sidebar-nav" aria-label="Documentation">
               {% assign docs_pages = site.pages | sort: 'path' %}
               {% for doc in docs_pages %}
                 {% if doc.name != 'index.md' and doc.name != 'README.md' %}
@@ -43,10 +50,13 @@
         </aside>
 
         <main class="content">
-          <article class="page-content">
+          <article class="page-content acrylic">
             <header class="page-hero">
               {% if page.url == '/' %}
-                <p class="page-tag">Fluent Design</p>
+                <p class="page-tag">
+                  <img class="page-tag-icon" src="{{ '/assets/images/fabsim-icon.svg' | relative_url }}" alt="" width="18" height="18" />
+                  Fluent Design
+                </p>
               {% else %}
                 <p class="page-tag">{{ page.title | default: site.title }}</p>
               {% endif %}
@@ -55,15 +65,16 @@
                 <p class="page-description">{{ page.description }}</p>
               {% endif %}
             </header>
-            {{ content }}
+            <div class="page-body">
+              {{ content }}
+            </div>
           </article>
         </main>
       </div>
 
-      <footer class="site-footer">
-        <div>
-          <p>FabSim Docs · Fluent design-inspired GitHub Pages theme</p>
-        </div>
+      <footer class="site-footer acrylic">
+        <img class="footer-icon" src="{{ '/assets/images/fabsim-icon.svg' | relative_url }}" alt="" width="20" height="20" />
+        <p>FabSim Docs · WinUI Fluent design documentation</p>
       </footer>
     </div>
   </body>
