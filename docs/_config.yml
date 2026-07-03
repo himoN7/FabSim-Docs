@@ -4,6 +4,10 @@ theme: null
 baseurl: "/FabSim-Docs"
 url: "https://himoN7.github.io/FabSim-Docs"
 markdown: kramdown
+exclude:
+  - README.md
+readme_index:
+  enabled: false
 defaults:
   - scope:
       path: ""

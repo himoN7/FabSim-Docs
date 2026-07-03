@@ -31,10 +31,12 @@
           <div class="sidebar-inner">
             <p class="sidebar-title">Documentation</p>
             <nav class="sidebar-nav">
-              {% assign docs_pages = site.pages | where_exp: "page", "page.path contains 'docs/'" | sort: 'path' %}
+              {% assign docs_pages = site.pages | sort: 'path' %}
               {% for doc in docs_pages %}
-                {% assign name = doc.name | remove: '.md' | replace: '-',' ' | capitalize %}
-                <a class="sidebar-link{% if page.url == doc.url %} current{% endif %}" href="{{ doc.url | relative_url }}">{{ doc.title | default: name }}</a>
+                {% if doc.name != 'index.md' and doc.name != 'README.md' %}
+                  {% assign name = doc.name | remove: '.md' | replace: '-',' ' | capitalize %}
+                  <a class="sidebar-link{% if page.url == doc.url %} current{% endif %}" href="{{ doc.url | relative_url }}">{{ doc.title | default: name }}</a>
+                {% endif %}
               {% endfor %}
             </nav>
           </div>

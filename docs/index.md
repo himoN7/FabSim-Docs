@@ -10,7 +10,7 @@ description: Fluent-style documentation hub for FabSim Docs
 </section>
 
 <section class="card-grid">
-{% assign docs_pages = site.pages | where_exp: "page", "page.path contains '/docs/' or page.path contains 'docs/'" | sort: 'path' %}
+{% assign docs_pages = site.pages | sort: 'path' %}
 {% for doc in docs_pages %}
   {% if doc.name != 'index.md' and doc.name != 'README.md' %}
     {% assign name = doc.name | remove: '.md' | replace: '-',' ' | capitalize %}
