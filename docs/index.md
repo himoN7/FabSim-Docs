@@ -1,14 +1,9 @@
 ---
 layout: default
-title: FabSim Documentation
-description: Fluent-style documentation hub for FabSim Docs
+title: Welcome to FabSim Docs
+description: Browse the documentation with a clean, modern Fluent-inspired theme built for GitHub Pages.
+permalink: /
 ---
-<section class="page-hero">
-  <p class="page-tag">Fluent Design</p>
-  <h1>Welcome to FabSim Docs</h1>
-  <p>Browse the documentation with a clean, modern Fluent-inspired theme built for GitHub Pages.</p>
-</section>
-
 <section class="card-grid">
 {% assign docs_pages = site.pages | sort: 'path' %}
 {% for doc in docs_pages %}

@@ -45,7 +45,11 @@
         <main class="content">
           <article class="page-content">
             <header class="page-hero">
-              <p class="page-tag">{{ page.title | default: site.title }}</p>
+              {% if page.url == '/' %}
+                <p class="page-tag">Fluent Design</p>
+              {% else %}
+                <p class="page-tag">{{ page.title | default: site.title }}</p>
+              {% endif %}
               <h1>{{ page.title | default: site.title }}</h1>
               {% if page.description %}
                 <p class="page-description">{{ page.description }}</p>
