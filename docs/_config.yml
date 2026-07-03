@@ -6,6 +6,7 @@ url: "https://himoN7.github.io/FabSim-Docs"
 markdown: kramdown
 exclude:
   - README.md
+  - DOCUMENTATION-SUMMARY.md
 readme_index:
   enabled: false
 defaults:

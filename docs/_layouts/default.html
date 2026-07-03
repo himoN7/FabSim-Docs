@@ -40,10 +40,12 @@
             <nav class="sidebar-nav" aria-label="Documentation">
               {% assign docs_pages = site.pages | sort: 'path' %}
               {% for doc in docs_pages %}
-                {% if doc.name != 'index.md' and doc.name != 'README.md' %}
+                {% unless doc.name contains '_' %}
+                {% if doc.name != 'index.md' and doc.name != 'README.md' and doc.name != 'DOCUMENTATION-SUMMARY.md' %}
                   {% assign name = doc.name | remove: '.md' | replace: '-',' ' | capitalize %}
                   <a class="sidebar-link{% if page.url == doc.url %} current{% endif %}" href="{{ doc.url | relative_url }}">{{ doc.title | default: name }}</a>
                 {% endif %}
+                {% endunless %}
               {% endfor %}
             </nav>
           </div>
